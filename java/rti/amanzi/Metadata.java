@@ -72,26 +72,14 @@ public final class Metadata {
     rti.amanzi.ParameterOuterClass.ParameterOrBuilder getParameterOrBuilder();
 
     /**
-     * <pre>
-     *    repeated amanzi.Parameter parameters = 5;
-     * </pre>
-     *
      * <code>.rti.amanzi.TimeInterval interval = 6;</code>
      */
     boolean hasInterval();
     /**
-     * <pre>
-     *    repeated amanzi.Parameter parameters = 5;
-     * </pre>
-     *
      * <code>.rti.amanzi.TimeInterval interval = 6;</code>
      */
     rti.amanzi.Timeinterval.TimeInterval getInterval();
     /**
-     * <pre>
-     *    repeated amanzi.Parameter parameters = 5;
-     * </pre>
-     *
      * <code>.rti.amanzi.TimeInterval interval = 6;</code>
      */
     rti.amanzi.Timeinterval.TimeIntervalOrBuilder getIntervalOrBuilder();
@@ -468,30 +456,18 @@ public final class Metadata {
     public static final int INTERVAL_FIELD_NUMBER = 6;
     private rti.amanzi.Timeinterval.TimeInterval interval_;
     /**
-     * <pre>
-     *    repeated amanzi.Parameter parameters = 5;
-     * </pre>
-     *
      * <code>.rti.amanzi.TimeInterval interval = 6;</code>
      */
     public boolean hasInterval() {
       return interval_ != null;
     }
     /**
-     * <pre>
-     *    repeated amanzi.Parameter parameters = 5;
-     * </pre>
-     *
      * <code>.rti.amanzi.TimeInterval interval = 6;</code>
      */
     public rti.amanzi.Timeinterval.TimeInterval getInterval() {
       return interval_ == null ? rti.amanzi.Timeinterval.TimeInterval.getDefaultInstance() : interval_;
     }
     /**
-     * <pre>
-     *    repeated amanzi.Parameter parameters = 5;
-     * </pre>
-     *
      * <code>.rti.amanzi.TimeInterval interval = 6;</code>
      */
     public rti.amanzi.Timeinterval.TimeIntervalOrBuilder getIntervalOrBuilder() {
@@ -1457,20 +1433,12 @@ public final class Metadata {
       private com.google.protobuf.SingleFieldBuilderV3<
           rti.amanzi.Timeinterval.TimeInterval, rti.amanzi.Timeinterval.TimeInterval.Builder, rti.amanzi.Timeinterval.TimeIntervalOrBuilder> intervalBuilder_;
       /**
-       * <pre>
-       *    repeated amanzi.Parameter parameters = 5;
-       * </pre>
-       *
        * <code>.rti.amanzi.TimeInterval interval = 6;</code>
        */
       public boolean hasInterval() {
         return intervalBuilder_ != null || interval_ != null;
       }
       /**
-       * <pre>
-       *    repeated amanzi.Parameter parameters = 5;
-       * </pre>
-       *
        * <code>.rti.amanzi.TimeInterval interval = 6;</code>
        */
       public rti.amanzi.Timeinterval.TimeInterval getInterval() {
@@ -1481,10 +1449,6 @@ public final class Metadata {
         }
       }
       /**
-       * <pre>
-       *    repeated amanzi.Parameter parameters = 5;
-       * </pre>
-       *
        * <code>.rti.amanzi.TimeInterval interval = 6;</code>
        */
       public Builder setInterval(rti.amanzi.Timeinterval.TimeInterval value) {
@@ -1501,10 +1465,6 @@ public final class Metadata {
         return this;
       }
       /**
-       * <pre>
-       *    repeated amanzi.Parameter parameters = 5;
-       * </pre>
-       *
        * <code>.rti.amanzi.TimeInterval interval = 6;</code>
        */
       public Builder setInterval(
@@ -1519,10 +1479,6 @@ public final class Metadata {
         return this;
       }
       /**
-       * <pre>
-       *    repeated amanzi.Parameter parameters = 5;
-       * </pre>
-       *
        * <code>.rti.amanzi.TimeInterval interval = 6;</code>
        */
       public Builder mergeInterval(rti.amanzi.Timeinterval.TimeInterval value) {
@@ -1541,10 +1497,6 @@ public final class Metadata {
         return this;
       }
       /**
-       * <pre>
-       *    repeated amanzi.Parameter parameters = 5;
-       * </pre>
-       *
        * <code>.rti.amanzi.TimeInterval interval = 6;</code>
        */
       public Builder clearInterval() {
@@ -1559,10 +1511,6 @@ public final class Metadata {
         return this;
       }
       /**
-       * <pre>
-       *    repeated amanzi.Parameter parameters = 5;
-       * </pre>
-       *
        * <code>.rti.amanzi.TimeInterval interval = 6;</code>
        */
       public rti.amanzi.Timeinterval.TimeInterval.Builder getIntervalBuilder() {
@@ -1571,10 +1519,6 @@ public final class Metadata {
         return getIntervalFieldBuilder().getBuilder();
       }
       /**
-       * <pre>
-       *    repeated amanzi.Parameter parameters = 5;
-       * </pre>
-       *
        * <code>.rti.amanzi.TimeInterval interval = 6;</code>
        */
       public rti.amanzi.Timeinterval.TimeIntervalOrBuilder getIntervalOrBuilder() {
@@ -1586,10 +1530,6 @@ public final class Metadata {
         }
       }
       /**
-       * <pre>
-       *    repeated amanzi.Parameter parameters = 5;
-       * </pre>
-       *
        * <code>.rti.amanzi.TimeInterval interval = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
