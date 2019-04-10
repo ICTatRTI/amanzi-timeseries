@@ -17,7 +17,6 @@ message TimeSeriesMetaInfo {
     bool approved = 3;
     amanzi.Source source = 4;
     amanzi.Parameter parameter = 5;
-//    repeated amanzi.Parameter parameters = 5;
     amanzi.TimeInterval interval = 6;
     repeated amanzi.History history = 7;
 }
