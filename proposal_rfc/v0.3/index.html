@@ -732,11 +732,12 @@ at a point in time when one of the following occurs:</p>
         <span class="na">FORECAST</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="n">TimeSeriesType</span> <span class="na">type</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="kt">bool</span> <span class="na">approved</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="n">amanzi.Source</span> <span class="na">source</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-    <span class="n">amanzi.Parameter</span> <span class="na">parameter</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
-    <span class="n">amanzi.TimeInterval</span> <span class="na">interval</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-    <span class="k">repeated</span> <span class="n">amanzi.History</span> <span class="na">history</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+    <span class="n">google.protobuf.Timestamp</span> <span class="na">forecastTime</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="na">approved</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="n">amanzi.Source</span> <span class="na">source</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+    <span class="n">amanzi.Parameter</span> <span class="na">parameter</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="n">amanzi.TimeInterval</span> <span class="na">interval</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+    <span class="k">repeated</span> <span class="n">amanzi.History</span> <span class="na">history</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -1008,7 +1009,7 @@ This Message is only really applicable when the timeseries time is REALTIME</p>
 <td></td>
 </tr>
 <tr>
-<td>method</td>
+<td>collectionMethod</td>
 <td>if available the sampling method used by the device to perform the measurements</td>
 <td>string</td>
 <td></td>
