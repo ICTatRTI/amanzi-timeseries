@@ -1,0 +1,535 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.1.1">
+    
+    
+      
+        <title>Amanzi TimeSeries Specification</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/application.3020aac5.css">
+      
+      
+    
+    
+      <script src="assets/javascripts/modernizr.01ccdecf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#amanzitm-timeseries-specifcation" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="." title="Amanzi TimeSeries Specification" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Amanzi TimeSeries Specification
+            </span>
+            <span class="md-header-nav__topic">
+              Introduction
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="." title="Amanzi TimeSeries Specification" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Amanzi TimeSeries Specification
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Introduction
+      </label>
+    
+    <a href="." title="Introduction" class="md-nav__link md-nav__link--active">
+      Introduction
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#storing-time-series-data-efficiently" title="Storing Time Series data efficiently" class="md-nav__link">
+    Storing Time Series data efficiently
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#providing-sensible-ways-to-process-time-series-data" title="Providing sensible ways to process time series data" class="md-nav__link">
+    Providing sensible ways to process time series data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transmitting-time-series-data" title="Transmitting time series data" class="md-nav__link">
+    Transmitting time series data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consuming-time-series-data-as-an-end-user" title="Consuming Time series data as an end-user" class="md-nav__link">
+    Consuming Time series data as an end-user
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="proposal_rfc/v0.3/" title="Proposal RFC" class="md-nav__link">
+      Proposal RFC
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="current_version/v0.2/" title="Current Version" class="md-nav__link">
+      Current Version
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Previous Versions
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Previous Versions
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="previous_versions/v0.1/" title="v0.1" class="md-nav__link">
+      v0.1
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Implementations
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Implementations
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="implementations/ts4j/" title="Timeseries for Java(Ts4j)" class="md-nav__link">
+      Timeseries for Java(Ts4j)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="implementations/create/" title="Creating your own implementation" class="md-nav__link">
+      Creating your own implementation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="best_practices/" title="Best Practices" class="md-nav__link">
+      Best Practices
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="about/" title="About" class="md-nav__link">
+      About
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#storing-time-series-data-efficiently" title="Storing Time Series data efficiently" class="md-nav__link">
+    Storing Time Series data efficiently
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#providing-sensible-ways-to-process-time-series-data" title="Providing sensible ways to process time series data" class="md-nav__link">
+    Providing sensible ways to process time series data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transmitting-time-series-data" title="Transmitting time series data" class="md-nav__link">
+    Transmitting time series data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consuming-time-series-data-as-an-end-user" title="Consuming Time series data as an end-user" class="md-nav__link">
+    Consuming Time series data as an end-user
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="amanzitm-timeseries-specifcation">Amanzi™ Timeseries Specifcation</h1>
+<p>The Amanzi™ Time Series Specification (also referred to as the TSAPI) is a development standard for the storage, processing,
+transmitting and consuming of Time Series data throughout the Amanzi™ system. The Amanzi™ Time series specification is intended
+to be a fully comprehensive format supporting the following kinds of datasets: </p>
+<ul>
+<li>Real time (e.g sensor data), </li>
+<li>Historical  (both modeled and observed)</li>
+<li>Projections (forecasts into the future).</li>
+</ul>
+<h2 id="storing-time-series-data-efficiently">Storing Time Series data efficiently</h2>
+<p>Time series data is a challenging beast to handle efficiently at scale and there have been numerous implementations attempting
+to solve the problem. The Amanzi™ specification for storage has six major objectives:</p>
+<ul>
+<li>Keep the storage solution simple but efficient.</li>
+<li>Easily allow for local (users harddisk) or remote storage options.</li>
+<li>Store in a format that is commonly used for processing the data.</li>
+<li>Always preserve raw data from an origin datasource for a specified period of time.</li>
+<li>Store time series records in such a way that allows for partial reads/pagination.</li>
+<li>Flexible enough to handle very structured data or completely unstructured data.</li>
+</ul>
+<h2 id="providing-sensible-ways-to-process-time-series-data">Providing sensible ways to process time series data</h2>
+<p>Through the implementations of this specification the goal is to provide a default set of operations
+that are commonly performed on time series data. See <a href="implementations/create/">Implementations</a> for a list of 
+implementations of this specification.</p>
+<h2 id="transmitting-time-series-data">Transmitting time series data</h2>
+<p>To transmit time series data to multiple components in a cloud based system a common structure is needed. There are many
+things to consider when deciding on a format for transport such as: </p>
+<ul>
+<li>Size of the data  </li>
+<li>The client device that will eventually receive the data(e.g browser, your harddrive, or another server) </li>
+<li>The transport protocol used to transmit the data to its destination. </li>
+</ul>
+<p>For most Browser based applications HTTP using a transport format of <a href="https://www.json.org/">json</a> is recommended, however its important that
+the data is appropriately set up for partial reads, or pagination as very large json data sets will reduce your users 
+performance significantly.</p>
+<p>For server to server communication ideally HTTP2 with a binary <a href="https://developers.google.com/protocol-buffers/">protobuf</a> format is recommended.</p>
+<p>Implementations of this specifications <strong>must</strong> support both of these formats</p>
+<p>Unfortunately there is not a one-size fits all solution for transmitting time series data. However <a href="">this</a> will
+list some best practices around transporting time series data around for common use cases. </p>
+<h2 id="consuming-time-series-data-as-an-end-user">Consuming Time series data as an end-user</h2>
+<p>TODO</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+        
+          <a href="proposal_rfc/v0.3/" title="Proposal RFC" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Proposal RFC
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/application.dc02f8ce.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"."}})</script>
+      
+    
+  </body>
+</html>
