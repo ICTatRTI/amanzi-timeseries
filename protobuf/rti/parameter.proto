@@ -1,0 +1,43 @@
+syntax = "proto3";
+package rti.amanzi;
+import "protobuf/google/struct.proto";
+message Unit {
+    string displayName = 1;
+    string name = 2;
+    string abbrevation = 3;
+}
+
+message NaNValue {
+    string value = 1;
+}
+
+message MissingValue {
+    oneof value_type {
+        google.protobuf.NullValue null_value = 1;
+        NaNValue nan_value = 2;
+    }
+}
+
+message Parameter {
+    enum ParameterType {
+        OBSERVED = 0;
+        MODELED = 1;
+        COMPUTED = 2;
+    }
+    enum Qualifier {
+        RAW = 0;
+        VERIFIED = 1;
+        FINAL = 2;
+    }
+    string name = 1;
+    ParameterType type = 2;
+    string method = 3;
+    string description = 4;
+    string format = 5;
+    double min = 6;
+    double max = 7;
+    Qualifier quality = 8;
+    MissingValue missingValue = 9;
+
+    string units = 10;
+}

@@ -1,0 +1,23 @@
+syntax = "proto3";
+package rti.amanzi;
+import "protobuf/rti/parameter.proto";
+import "protobuf/rti/source.proto";
+import "protobuf/rti/timeinterval.proto";
+import "protobuf/rti/history.proto";
+import "protobuf/google/timestamp.proto";
+
+message TimeSeriesMetaInfo {
+    enum TimeSeriesType {
+        HISTORICAL = 0;
+        REAL_TIME = 1;
+        FORECAST = 2;
+    }
+    TimeSeriesType type = 1;
+    google.protobuf.Timestamp forecastTime = 2;
+    bool approved = 3;
+    amanzi.Source source = 4;
+    amanzi.Parameter parameter = 5;
+//    repeated amanzi.Parameter parameters = 5;
+    amanzi.TimeInterval interval = 6;
+    repeated amanzi.History history = 7;
+}

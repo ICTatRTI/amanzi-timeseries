@@ -1,0 +1,22 @@
+syntax = 'proto3';
+package rti.amanzi;
+import "protobuf/google/timestamp.proto";
+import "protobuf/rti/timerecord.proto";
+import "protobuf/rti/metadata.proto";
+// Represents a Timeseries and its metadata. Amanzi Time series are "Created"
+// at a point in time when one of the following occurs:
+// * A model is ran natively generating Timeseries of this specifcation
+// * A third party datasource is read and converted to this format
+// * A processing operation is performed on one or more timeseries, resulting in a new timeseries being created
+// A Time series data representation, is a heading of the total dataset above {insert data threshold here}
+// a Time series metadata representation holds additional information about the timeseries origins and values.
+message TimeSeries {
+    // a UUID
+    string id = 1;
+    // timestamp this timeseries was instanciated
+    google.protobuf.Timestamp created = 2;
+     // a meta object describing the timeseries
+    amanzi.TimeSeriesMetaInfo metaInfo = 3;
+    // the time , value records of the timeseries
+    repeated TimeRecord data = 4;
+}

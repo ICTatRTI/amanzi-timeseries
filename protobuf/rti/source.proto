@@ -1,0 +1,29 @@
+syntax = "proto3";
+package rti.amanzi;
+import "protobuf/rti/geometry.proto";
+
+// Represents a "Source" source meaning , physical location or digital location (e.g a datasource)
+message Source {
+    message Site {
+        enum SiteType {
+            HUC8 = 0;
+            HUC12 = 1;
+            CATCHMENT = 2;
+
+        }
+        string name = 1;
+        SiteType type = 2;
+    }
+    message Equipment {
+        string name = 1;
+        string serial = 2;
+        string collectionMethod = 3;
+        string description = 4;
+    }
+
+    string name = 1;
+    string url = 2;
+    Site site = 3;
+    amanzi.Geometry location = 4;
+    Equipment equipment = 5;
+}

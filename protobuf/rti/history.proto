@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package rti.amanzi;
+import "protobuf/google/timestamp.proto";
+
+message History{
+    google.protobuf.Timestamp modifiedOn = 1;
+    string comment = 2;
+    repeated string referenceIds = 3;
+}

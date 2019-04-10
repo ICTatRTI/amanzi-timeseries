@@ -1,0 +1,11 @@
+syntax = 'proto3';
+package rti.amanzi;
+import "protobuf/google/timestamp.proto";
+import "protobuf/google/struct.proto";
+
+
+// A simple datetimte, value pairing
+message TimeRecord {
+    google.protobuf.Timestamp datetime = 1;
+    google.protobuf.Value value = 2;
+}
