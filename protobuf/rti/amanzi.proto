@@ -1,8 +1,7 @@
 syntax = "proto3";
-package rit.amanzi;
+package amanzi;
 option java_package = "org.rti.amanzi.protobuf";
 option java_multiple_files = true;
-
 // `Struct` represents a structured data value, consisting of fields
 // which map to dynamically typed values. In some languages, `Struct`
 // might be supported by a native representation. For example, in
@@ -98,7 +97,6 @@ message Source {
     Equipment equipment = 5;
 }
 
-
 message Feature {
     Geometry geometry = 1;
 
@@ -109,18 +107,18 @@ message Feature {
 
     repeated GValue values = 13; // unique values
     repeated uint32 properties = 14 ; // pairs of key/value indexes
-    repeated uint32 custom_properties = 15; // arbitrary properties
+    repeated uint32 custom_properties = 15 ; // arbitrary properties
 }
 
 message Geometry {
     Type type = 1;
 
-    repeated uint32 lengths = 2 ; // coordinate structure in lengths
-    repeated sint64 coords = 3 ; // delta-encoded integer values
+    repeated uint32 lengths = 2; // coordinate structure in lengths
+    repeated sint64 coordinates = 3 ; // delta-encoded integer values
     repeated Geometry geometries = 4;
 
     repeated GValue values = 13;
-    repeated uint32 custom_properties = 15 ;
+    repeated uint32 custom_properties = 15;
 
     enum Type {
         POINT = 0;
@@ -137,7 +135,7 @@ message FeatureCollection {
     repeated Feature features = 1;
 
     repeated GValue values = 13;
-    repeated uint32 custom_properties = 15 [packed = true];
+    repeated uint32 custom_properties = 15 ;
 }
 
 message GValue {
@@ -160,14 +158,9 @@ message NaNValue {
     string value = 1;
 }
 
-
-enum NullValue {
-    NullValue = 0;
-}
-
 message MissingValue {
     oneof value_type {
-        NullValue null_value = 1;
+        NullValue nvalue = 1;
         NaNValue nan_value = 2;
     }
 }
