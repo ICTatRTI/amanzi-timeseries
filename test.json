@@ -1,0 +1,25 @@
+{// one time series
+  "input": {
+    "timeseries": {},
+    "requestedStatistics": {
+      "percentiles": ["25", "50"]
+    }
+  },
+
+  "statistics": {
+    "timeseries": {
+      "id": "353242af-7265-41dd-8284-233fdab17efb",
+      "start": 31350135,
+      "end": 35135055
+    },
+    "mean": 50,
+    "median": 100,
+    "minimum": 100,
+    "maximum": 100,
+    "standardDeviation": 100,
+    "percentiles": {
+      "15": 20
+    }
+  }
+}
+
