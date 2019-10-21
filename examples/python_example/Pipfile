@@ -7,6 +7,7 @@ verify_ssl = true
 
 [packages]
 protobuf3-to-dict = "*"
+protobuf = "*"
 
 [requires]
 python_version = "3.7"

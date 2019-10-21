@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "24ba66f8c4c348d85485b1b93baa60c612b220eab9410f2ea69e3e057837da51"
+            "sha256": "60944db6f1f351cfd96ce5b94785c12016920beeb96a4ee1da14e8505e2e67b1"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -35,6 +35,7 @@
                 "sha256:f50f3b1c5c1c1334ca7ce9cad5992f098f460ffd6388a3cabad10b66c2006b09",
                 "sha256:f99f127909731cafb841c52f9216e447d3e4afb99b17bebfad327a75aee206de"
             ],
+            "index": "pypi",
             "version": "==3.10.0"
         },
         "protobuf3-to-dict": {
