@@ -3,7 +3,7 @@ from uuid import uuid4
 from protobuf_to_dict import protobuf_to_dict, dict_to_protobuf
 from google.protobuf.struct_pb2 import Struct
 from google.protobuf.timestamp_pb2 import Timestamp
-from google.protobuf.json_format import MessageToJson
+from google.protobuf.json_format import MessageToJson, Parse
 import datetime
 import random
 import json
@@ -49,6 +49,7 @@ reference_pb.seconds = int(reference)
 
 start_pb = Timestamp()
 start_pb.seconds = int(start.timestamp())
+
 end_pb = Timestamp()
 end_pb.seconds = int(end.timestamp())
 
@@ -61,6 +62,7 @@ timeInfo.end.CopyFrom(end_pb)
 timeInfo.interval = "PT1H"
 
 meta.source.CopyFrom(source)
+meta.dataType = amanzi_pb2.DataType.string_value
 meta.sourceLocation.name = "Corner of Lake Bisqcuit"
 meta.sourceLocation.code = "315315"
 meta.sourceLocation.elevation.value = 100
@@ -82,15 +84,17 @@ while current.timestamp() <= end.timestamp():
 
     record.datetime.CopyFrom(record_dt_pb)
     record.qualifiers.extend("p")
-    record.value.double_value = random.random()
+    record.value.string_value = str(random.random())
     current = current + duration
 
 
 print(ts.SerializeToString())
 d = protobuf_to_dict(ts)
-j = MessageToJson(ts)
+j = MessageToJson(ts.metaInfo)
 print(j)
-print(protobuf_to_dict(ts))
+# new_ts = Parse(j, amanzi_pb2.TimeSeries())
+# print(new_ts)
+# print(protobuf_to_dict(ts))
 
 
 

@@ -6,15 +6,16 @@ option java_multiple_files = true;
 import "google/protobuf/struct.proto";
 import "google/protobuf/timestamp.proto";
 
-message NumberValue {
+message Value {
     oneof kind {
         double double_value = 1;
         float float_value = 2;
         int64 int64_value = 3;
         int32 int32_value = 4;
         uint64 uint64_value = 5;
-        uint32 unit32_value = 6;
-        NullValue null_value = 7;
+        uint32 uint32_value = 6;
+        string string_value = 7;
+        NullValue null_value = 8;
     }
 }
 
@@ -55,7 +56,8 @@ message TimeInfo {
     google.protobuf.Timestamp referenceTime = 1;
     google.protobuf.Timestamp start = 2;
     google.protobuf.Timestamp end = 3;
-    string interval = 4;
+    string windowedInterval = 4;
+    string interval = 5;
 }
 
 message Origin {
@@ -74,18 +76,19 @@ message TimeSeriesMetaInfo {
     string name = 2;
     string code = 3;
     string type = 4;
-    google.protobuf.Struct properties = 5;
-    repeated Group groups = 6;
-    Source source = 7;
-    SourceLocation sourceLocation = 8;
-    Parameter parameter = 9;
-    TimeInfo timeInfo = 10;
-    Origin origin = 11;
+    string statistic = 6;
+    google.protobuf.Struct properties = 7;
+    repeated Group groups = 8;
+    Source source = 9;
+    SourceLocation sourceLocation = 10;
+    Parameter parameter = 11;
+    TimeInfo timeInfo = 12;
+    Origin origin = 13;
 }
 
 message TimeRecord {
     google.protobuf.Timestamp datetime = 1;
-    NumberValue value = 2;
+    Value value = 2;
     repeated string qualifiers =3;
     google.protobuf.Struct properties = 4;
 }
