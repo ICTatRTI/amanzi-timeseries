@@ -14,15 +14,18 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
+from google.protobuf import struct_pb2 as google_dot_protobuf_dot_struct__pb2
+from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='amanzi.proto',
   package='rti.amanzi.protobuf',
   syntax='proto3',
-  serialized_options=_b('\n\027org.rti.amanzi.protobufP\001'),
-  serialized_pb=_b('\n\x0c\x61manzi.proto\x12\x13rti.amanzi.protobuf\"\x8c\x01\n\x06Struct\x12\x37\n\x06\x66ields\x18\x01 \x03(\x0b\x32\'.rti.amanzi.protobuf.Struct.FieldsEntry\x1aI\n\x0b\x46ieldsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12)\n\x05value\x18\x02 \x01(\x0b\x32\x1a.rti.amanzi.protobuf.Value:\x02\x38\x01\"\xd8\x01\n\x0bNumberValue\x12\x16\n\x0c\x64ouble_value\x18\x01 \x01(\x01H\x00\x12\x15\n\x0b\x66loat_value\x18\x02 \x01(\x02H\x00\x12\x15\n\x0bint64_value\x18\x03 \x01(\x03H\x00\x12\x15\n\x0bint32_value\x18\x04 \x01(\x05H\x00\x12\x16\n\x0cuint64_value\x18\x05 \x01(\x04H\x00\x12\x16\n\x0cunit32_value\x18\x06 \x01(\rH\x00\x12\x34\n\nnull_value\x18\x07 \x01(\x0e\x32\x1e.rti.amanzi.protobuf.NullValueH\x00\x42\x06\n\x04kind\"\xf6\x01\n\x05Value\x12\x34\n\nnull_value\x18\x01 \x01(\x0e\x32\x1e.rti.amanzi.protobuf.NullValueH\x00\x12\x16\n\x0cnumber_value\x18\x02 \x01(\x01H\x00\x12\x16\n\x0cstring_value\x18\x03 \x01(\tH\x00\x12\x14\n\nbool_value\x18\x04 \x01(\x08H\x00\x12\x33\n\x0cstruct_value\x18\x05 \x01(\x0b\x32\x1b.rti.amanzi.protobuf.StructH\x00\x12\x34\n\nlist_value\x18\x06 \x01(\x0b\x32\x1e.rti.amanzi.protobuf.ListValueH\x00\x42\x06\n\x04kind\"7\n\tListValue\x12*\n\x06values\x18\x01 \x03(\x0b\x32\x1a.rti.amanzi.protobuf.Value\"+\n\tTimestamp\x12\x0f\n\x07seconds\x18\x01 \x01(\x03\x12\r\n\x05nanos\x18\x02 \x01(\x05\"$\n\x06Source\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t\"8\n\tElevation\x12\r\n\x05value\x18\x01 \x01(\x01\x12\r\n\x05units\x18\x02 \x01(\t\x12\r\n\x05\x64\x61tum\x18\x03 \x01(\t\"_\n\x0eSourceLocation\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t\x12\x31\n\televation\x18\x03 \x01(\x0b\x32\x1e.rti.amanzi.protobuf.Elevation\"6\n\tParameter\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t\x12\r\n\x05units\x18\x03 \x01(\t\"\xaf\x01\n\x08TimeInfo\x12\x35\n\rreferenceTime\x18\x01 \x01(\x0b\x32\x1e.rti.amanzi.protobuf.Timestamp\x12-\n\x05start\x18\x02 \x01(\x0b\x32\x1e.rti.amanzi.protobuf.Timestamp\x12+\n\x03\x65nd\x18\x03 \x01(\x0b\x32\x1e.rti.amanzi.protobuf.Timestamp\x12\x10\n\x08interval\x18\x04 \x01(\t\"g\n\x06Origin\x12\x32\n\nmodifiedOn\x18\x01 \x01(\x0b\x32\x1e.rti.amanzi.protobuf.Timestamp\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\x12\x14\n\x0creferenceIds\x18\x03 \x03(\t\"-\n\x05Group\x12\x0f\n\x07groupId\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\"\xa2\x03\n\x12TimeSeriesMetaInfo\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0c\n\x04\x63ode\x18\x03 \x01(\t\x12\x0c\n\x04type\x18\x04 \x01(\t\x12/\n\nproperties\x18\x05 \x01(\x0b\x32\x1b.rti.amanzi.protobuf.Struct\x12*\n\x06groups\x18\x06 \x03(\x0b\x32\x1a.rti.amanzi.protobuf.Group\x12+\n\x06source\x18\x07 \x01(\x0b\x32\x1b.rti.amanzi.protobuf.Source\x12;\n\x0esourceLocation\x18\x08 \x01(\x0b\x32#.rti.amanzi.protobuf.SourceLocation\x12\x31\n\tparameter\x18\t \x01(\x0b\x32\x1e.rti.amanzi.protobuf.Parameter\x12/\n\x08timeInfo\x18\n \x01(\x0b\x32\x1d.rti.amanzi.protobuf.TimeInfo\x12+\n\x06origin\x18\x0b \x01(\x0b\x32\x1b.rti.amanzi.protobuf.Origin\"\xb4\x01\n\nTimeRecord\x12\x30\n\x08\x64\x61tetime\x18\x01 \x01(\x0b\x32\x1e.rti.amanzi.protobuf.Timestamp\x12/\n\x05value\x18\x02 \x01(\x0b\x32 .rti.amanzi.protobuf.NumberValue\x12\x12\n\nqualifiers\x18\x03 \x03(\t\x12/\n\nproperties\x18\x04 \x01(\x0b\x32\x1b.rti.amanzi.protobuf.Struct\"v\n\nTimeSeries\x12\x39\n\x08metaInfo\x18\x03 \x01(\x0b\x32\'.rti.amanzi.protobuf.TimeSeriesMetaInfo\x12-\n\x04\x64\x61ta\x18\x04 \x03(\x0b\x32\x1f.rti.amanzi.protobuf.TimeRecord*\x1b\n\tNullValue\x12\x0e\n\nNULL_VALUE\x10\x00\x42\x1b\n\x17org.rti.amanzi.protobufP\x01\x62\x06proto3')
-)
+  serialized_options=_b('\n\024org.rti.amanzi.protoP\001'),
+  serialized_pb=_b('\n\x0c\x61manzi.proto\x12\x13rti.amanzi.protobuf\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xd8\x01\n\x0bNumberValue\x12\x16\n\x0c\x64ouble_value\x18\x01 \x01(\x01H\x00\x12\x15\n\x0b\x66loat_value\x18\x02 \x01(\x02H\x00\x12\x15\n\x0bint64_value\x18\x03 \x01(\x03H\x00\x12\x15\n\x0bint32_value\x18\x04 \x01(\x05H\x00\x12\x16\n\x0cuint64_value\x18\x05 \x01(\x04H\x00\x12\x16\n\x0cunit32_value\x18\x06 \x01(\rH\x00\x12\x34\n\nnull_value\x18\x07 \x01(\x0e\x32\x1e.rti.amanzi.protobuf.NullValueH\x00\x42\x06\n\x04kind\"$\n\x06Source\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t\"8\n\tElevation\x12\r\n\x05value\x18\x01 \x01(\x01\x12\r\n\x05units\x18\x02 \x01(\t\x12\r\n\x05\x64\x61tum\x18\x03 \x01(\t\"_\n\x0eSourceLocation\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t\x12\x31\n\televation\x18\x03 \x01(\x0b\x32\x1e.rti.amanzi.protobuf.Elevation\"6\n\tParameter\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t\x12\r\n\x05units\x18\x03 \x01(\t\"\xa3\x01\n\x08TimeInfo\x12\x31\n\rreferenceTime\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12)\n\x05start\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\'\n\x03\x65nd\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x10\n\x08interval\x18\x04 \x01(\t\"c\n\x06Origin\x12.\n\nmodifiedOn\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\x12\x14\n\x0creferenceIds\x18\x03 \x03(\t\"-\n\x05Group\x12\x0f\n\x07groupId\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\"\x9e\x03\n\x12TimeSeriesMetaInfo\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0c\n\x04\x63ode\x18\x03 \x01(\t\x12\x0c\n\x04type\x18\x04 \x01(\t\x12+\n\nproperties\x18\x05 \x01(\x0b\x32\x17.google.protobuf.Struct\x12*\n\x06groups\x18\x06 \x03(\x0b\x32\x1a.rti.amanzi.protobuf.Group\x12+\n\x06source\x18\x07 \x01(\x0b\x32\x1b.rti.amanzi.protobuf.Source\x12;\n\x0esourceLocation\x18\x08 \x01(\x0b\x32#.rti.amanzi.protobuf.SourceLocation\x12\x31\n\tparameter\x18\t \x01(\x0b\x32\x1e.rti.amanzi.protobuf.Parameter\x12/\n\x08timeInfo\x18\n \x01(\x0b\x32\x1d.rti.amanzi.protobuf.TimeInfo\x12+\n\x06origin\x18\x0b \x01(\x0b\x32\x1b.rti.amanzi.protobuf.Origin\"\xac\x01\n\nTimeRecord\x12,\n\x08\x64\x61tetime\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x05value\x18\x02 \x01(\x0b\x32 .rti.amanzi.protobuf.NumberValue\x12\x12\n\nqualifiers\x18\x03 \x03(\t\x12+\n\nproperties\x18\x04 \x01(\x0b\x32\x17.google.protobuf.Struct\"v\n\nTimeSeries\x12\x39\n\x08metaInfo\x18\x01 \x01(\x0b\x32\'.rti.amanzi.protobuf.TimeSeriesMetaInfo\x12-\n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32\x1f.rti.amanzi.protobuf.TimeRecord*\x1b\n\tNullValue\x12\x0e\n\nNULL_VALUE\x10\x00\x42\x18\n\x14org.rti.amanzi.protoP\x01\x62\x06proto3')
+  ,
+  dependencies=[google_dot_protobuf_dot_struct__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
 _NULLVALUE = _descriptor.EnumDescriptor(
   name='NullValue',
@@ -37,82 +40,14 @@ _NULLVALUE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2053,
-  serialized_end=2080,
+  serialized_start=1594,
+  serialized_end=1621,
 )
 _sym_db.RegisterEnumDescriptor(_NULLVALUE)
 
 NullValue = enum_type_wrapper.EnumTypeWrapper(_NULLVALUE)
 NULL_VALUE = 0
 
-
-
-_STRUCT_FIELDSENTRY = _descriptor.Descriptor(
-  name='FieldsEntry',
-  full_name='rti.amanzi.protobuf.Struct.FieldsEntry',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='key', full_name='rti.amanzi.protobuf.Struct.FieldsEntry.key', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='value', full_name='rti.amanzi.protobuf.Struct.FieldsEntry.value', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=_b('8\001'),
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=105,
-  serialized_end=178,
-)
-
-_STRUCT = _descriptor.Descriptor(
-  name='Struct',
-  full_name='rti.amanzi.protobuf.Struct',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='fields', full_name='rti.amanzi.protobuf.Struct.fields', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[_STRUCT_FIELDSENTRY, ],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=38,
-  serialized_end=178,
-)
 
 
 _NUMBERVALUE = _descriptor.Descriptor(
@@ -186,146 +121,8 @@ _NUMBERVALUE = _descriptor.Descriptor(
       name='kind', full_name='rti.amanzi.protobuf.NumberValue.kind',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=181,
-  serialized_end=397,
-)
-
-
-_VALUE = _descriptor.Descriptor(
-  name='Value',
-  full_name='rti.amanzi.protobuf.Value',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='null_value', full_name='rti.amanzi.protobuf.Value.null_value', index=0,
-      number=1, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='number_value', full_name='rti.amanzi.protobuf.Value.number_value', index=1,
-      number=2, type=1, cpp_type=5, label=1,
-      has_default_value=False, default_value=float(0),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='string_value', full_name='rti.amanzi.protobuf.Value.string_value', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='bool_value', full_name='rti.amanzi.protobuf.Value.bool_value', index=3,
-      number=4, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='struct_value', full_name='rti.amanzi.protobuf.Value.struct_value', index=4,
-      number=5, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='list_value', full_name='rti.amanzi.protobuf.Value.list_value', index=5,
-      number=6, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-    _descriptor.OneofDescriptor(
-      name='kind', full_name='rti.amanzi.protobuf.Value.kind',
-      index=0, containing_type=None, fields=[]),
-  ],
-  serialized_start=400,
-  serialized_end=646,
-)
-
-
-_LISTVALUE = _descriptor.Descriptor(
-  name='ListValue',
-  full_name='rti.amanzi.protobuf.ListValue',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='values', full_name='rti.amanzi.protobuf.ListValue.values', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=648,
-  serialized_end=703,
-)
-
-
-_TIMESTAMP = _descriptor.Descriptor(
-  name='Timestamp',
-  full_name='rti.amanzi.protobuf.Timestamp',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='seconds', full_name='rti.amanzi.protobuf.Timestamp.seconds', index=0,
-      number=1, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='nanos', full_name='rti.amanzi.protobuf.Timestamp.nanos', index=1,
-      number=2, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=705,
-  serialized_end=748,
+  serialized_start=101,
+  serialized_end=317,
 )
 
 
@@ -362,8 +159,8 @@ _SOURCE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=750,
-  serialized_end=786,
+  serialized_start=319,
+  serialized_end=355,
 )
 
 
@@ -407,8 +204,8 @@ _ELEVATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=788,
-  serialized_end=844,
+  serialized_start=357,
+  serialized_end=413,
 )
 
 
@@ -452,8 +249,8 @@ _SOURCELOCATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=846,
-  serialized_end=941,
+  serialized_start=415,
+  serialized_end=510,
 )
 
 
@@ -497,8 +294,8 @@ _PARAMETER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=943,
-  serialized_end=997,
+  serialized_start=512,
+  serialized_end=566,
 )
 
 
@@ -549,8 +346,8 @@ _TIMEINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1000,
-  serialized_end=1175,
+  serialized_start=569,
+  serialized_end=732,
 )
 
 
@@ -594,8 +391,8 @@ _ORIGIN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1177,
-  serialized_end=1280,
+  serialized_start=734,
+  serialized_end=833,
 )
 
 
@@ -632,8 +429,8 @@ _GROUP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1282,
-  serialized_end=1327,
+  serialized_start=835,
+  serialized_end=880,
 )
 
 
@@ -733,8 +530,8 @@ _TIMESERIESMETAINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1330,
-  serialized_end=1748,
+  serialized_start=883,
+  serialized_end=1297,
 )
 
 
@@ -785,8 +582,8 @@ _TIMERECORD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1751,
-  serialized_end=1931,
+  serialized_start=1300,
+  serialized_end=1472,
 )
 
 
@@ -799,14 +596,14 @@ _TIMESERIES = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='metaInfo', full_name='rti.amanzi.protobuf.TimeSeries.metaInfo', index=0,
-      number=3, type=11, cpp_type=10, label=1,
+      number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='data', full_name='rti.amanzi.protobuf.TimeSeries.data', index=1,
-      number=4, type=11, cpp_type=10, label=3,
+      number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -823,13 +620,10 @@ _TIMESERIES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1933,
-  serialized_end=2051,
+  serialized_start=1474,
+  serialized_end=1592,
 )
 
-_STRUCT_FIELDSENTRY.fields_by_name['value'].message_type = _VALUE
-_STRUCT_FIELDSENTRY.containing_type = _STRUCT
-_STRUCT.fields_by_name['fields'].message_type = _STRUCT_FIELDSENTRY
 _NUMBERVALUE.fields_by_name['null_value'].enum_type = _NULLVALUE
 _NUMBERVALUE.oneofs_by_name['kind'].fields.append(
   _NUMBERVALUE.fields_by_name['double_value'])
@@ -852,50 +646,24 @@ _NUMBERVALUE.fields_by_name['unit32_value'].containing_oneof = _NUMBERVALUE.oneo
 _NUMBERVALUE.oneofs_by_name['kind'].fields.append(
   _NUMBERVALUE.fields_by_name['null_value'])
 _NUMBERVALUE.fields_by_name['null_value'].containing_oneof = _NUMBERVALUE.oneofs_by_name['kind']
-_VALUE.fields_by_name['null_value'].enum_type = _NULLVALUE
-_VALUE.fields_by_name['struct_value'].message_type = _STRUCT
-_VALUE.fields_by_name['list_value'].message_type = _LISTVALUE
-_VALUE.oneofs_by_name['kind'].fields.append(
-  _VALUE.fields_by_name['null_value'])
-_VALUE.fields_by_name['null_value'].containing_oneof = _VALUE.oneofs_by_name['kind']
-_VALUE.oneofs_by_name['kind'].fields.append(
-  _VALUE.fields_by_name['number_value'])
-_VALUE.fields_by_name['number_value'].containing_oneof = _VALUE.oneofs_by_name['kind']
-_VALUE.oneofs_by_name['kind'].fields.append(
-  _VALUE.fields_by_name['string_value'])
-_VALUE.fields_by_name['string_value'].containing_oneof = _VALUE.oneofs_by_name['kind']
-_VALUE.oneofs_by_name['kind'].fields.append(
-  _VALUE.fields_by_name['bool_value'])
-_VALUE.fields_by_name['bool_value'].containing_oneof = _VALUE.oneofs_by_name['kind']
-_VALUE.oneofs_by_name['kind'].fields.append(
-  _VALUE.fields_by_name['struct_value'])
-_VALUE.fields_by_name['struct_value'].containing_oneof = _VALUE.oneofs_by_name['kind']
-_VALUE.oneofs_by_name['kind'].fields.append(
-  _VALUE.fields_by_name['list_value'])
-_VALUE.fields_by_name['list_value'].containing_oneof = _VALUE.oneofs_by_name['kind']
-_LISTVALUE.fields_by_name['values'].message_type = _VALUE
 _SOURCELOCATION.fields_by_name['elevation'].message_type = _ELEVATION
-_TIMEINFO.fields_by_name['referenceTime'].message_type = _TIMESTAMP
-_TIMEINFO.fields_by_name['start'].message_type = _TIMESTAMP
-_TIMEINFO.fields_by_name['end'].message_type = _TIMESTAMP
-_ORIGIN.fields_by_name['modifiedOn'].message_type = _TIMESTAMP
-_TIMESERIESMETAINFO.fields_by_name['properties'].message_type = _STRUCT
+_TIMEINFO.fields_by_name['referenceTime'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
+_TIMEINFO.fields_by_name['start'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
+_TIMEINFO.fields_by_name['end'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
+_ORIGIN.fields_by_name['modifiedOn'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
+_TIMESERIESMETAINFO.fields_by_name['properties'].message_type = google_dot_protobuf_dot_struct__pb2._STRUCT
 _TIMESERIESMETAINFO.fields_by_name['groups'].message_type = _GROUP
 _TIMESERIESMETAINFO.fields_by_name['source'].message_type = _SOURCE
 _TIMESERIESMETAINFO.fields_by_name['sourceLocation'].message_type = _SOURCELOCATION
 _TIMESERIESMETAINFO.fields_by_name['parameter'].message_type = _PARAMETER
 _TIMESERIESMETAINFO.fields_by_name['timeInfo'].message_type = _TIMEINFO
 _TIMESERIESMETAINFO.fields_by_name['origin'].message_type = _ORIGIN
-_TIMERECORD.fields_by_name['datetime'].message_type = _TIMESTAMP
+_TIMERECORD.fields_by_name['datetime'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _TIMERECORD.fields_by_name['value'].message_type = _NUMBERVALUE
-_TIMERECORD.fields_by_name['properties'].message_type = _STRUCT
+_TIMERECORD.fields_by_name['properties'].message_type = google_dot_protobuf_dot_struct__pb2._STRUCT
 _TIMESERIES.fields_by_name['metaInfo'].message_type = _TIMESERIESMETAINFO
 _TIMESERIES.fields_by_name['data'].message_type = _TIMERECORD
-DESCRIPTOR.message_types_by_name['Struct'] = _STRUCT
 DESCRIPTOR.message_types_by_name['NumberValue'] = _NUMBERVALUE
-DESCRIPTOR.message_types_by_name['Value'] = _VALUE
-DESCRIPTOR.message_types_by_name['ListValue'] = _LISTVALUE
-DESCRIPTOR.message_types_by_name['Timestamp'] = _TIMESTAMP
 DESCRIPTOR.message_types_by_name['Source'] = _SOURCE
 DESCRIPTOR.message_types_by_name['Elevation'] = _ELEVATION
 DESCRIPTOR.message_types_by_name['SourceLocation'] = _SOURCELOCATION
@@ -909,48 +677,12 @@ DESCRIPTOR.message_types_by_name['TimeSeries'] = _TIMESERIES
 DESCRIPTOR.enum_types_by_name['NullValue'] = _NULLVALUE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-Struct = _reflection.GeneratedProtocolMessageType('Struct', (_message.Message,), dict(
-
-  FieldsEntry = _reflection.GeneratedProtocolMessageType('FieldsEntry', (_message.Message,), dict(
-    DESCRIPTOR = _STRUCT_FIELDSENTRY,
-    __module__ = 'amanzi_pb2'
-    # @@protoc_insertion_point(class_scope:rti.amanzi.protobuf.Struct.FieldsEntry)
-    ))
-  ,
-  DESCRIPTOR = _STRUCT,
-  __module__ = 'amanzi_pb2'
-  # @@protoc_insertion_point(class_scope:rti.amanzi.protobuf.Struct)
-  ))
-_sym_db.RegisterMessage(Struct)
-_sym_db.RegisterMessage(Struct.FieldsEntry)
-
 NumberValue = _reflection.GeneratedProtocolMessageType('NumberValue', (_message.Message,), dict(
   DESCRIPTOR = _NUMBERVALUE,
   __module__ = 'amanzi_pb2'
   # @@protoc_insertion_point(class_scope:rti.amanzi.protobuf.NumberValue)
   ))
 _sym_db.RegisterMessage(NumberValue)
-
-Value = _reflection.GeneratedProtocolMessageType('Value', (_message.Message,), dict(
-  DESCRIPTOR = _VALUE,
-  __module__ = 'amanzi_pb2'
-  # @@protoc_insertion_point(class_scope:rti.amanzi.protobuf.Value)
-  ))
-_sym_db.RegisterMessage(Value)
-
-ListValue = _reflection.GeneratedProtocolMessageType('ListValue', (_message.Message,), dict(
-  DESCRIPTOR = _LISTVALUE,
-  __module__ = 'amanzi_pb2'
-  # @@protoc_insertion_point(class_scope:rti.amanzi.protobuf.ListValue)
-  ))
-_sym_db.RegisterMessage(ListValue)
-
-Timestamp = _reflection.GeneratedProtocolMessageType('Timestamp', (_message.Message,), dict(
-  DESCRIPTOR = _TIMESTAMP,
-  __module__ = 'amanzi_pb2'
-  # @@protoc_insertion_point(class_scope:rti.amanzi.protobuf.Timestamp)
-  ))
-_sym_db.RegisterMessage(Timestamp)
 
 Source = _reflection.GeneratedProtocolMessageType('Source', (_message.Message,), dict(
   DESCRIPTOR = _SOURCE,
@@ -1024,5 +756,4 @@ _sym_db.RegisterMessage(TimeSeries)
 
 
 DESCRIPTOR._options = None
-_STRUCT_FIELDSENTRY._options = None
 # @@protoc_insertion_point(module_scope)
