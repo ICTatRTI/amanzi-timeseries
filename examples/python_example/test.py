@@ -24,23 +24,17 @@ parameter.name = "Streamflow"
 parameter.code = "QIN"
 parameter.units = "cfs"
 
-reference = datetime.datetime.utcnow().timestamp()
+reference = datetime.datetime.utcnow()
 start = datetime.datetime(year=2000,month=1,day=1,hour=0, minute=0, second=0, tzinfo=datetime.timezone.utc)
 end = start + datetime.timedelta(days=10)
 duration = datetime.timedelta(hours=1)
 # set up timestamp pbs
-reference_pb = Timestamp()
-reference_pb.seconds = int(reference)
-start_pb = Timestamp()
-start_pb.seconds = int(start.timestamp())
-end_pb = Timestamp()
-end_pb.seconds = int(end.timestamp())
 dur_str = isodate.duration_isoformat(duration)
 
 timeInfo = amanzi_pb2.TimeInfo()
-timeInfo.referenceTime.CopyFrom(reference_pb)
-timeInfo.start.CopyFrom(start_pb)
-timeInfo.end.CopyFrom(end_pb)
+timeInfo.referenceTime.FromDatetime(reference)
+timeInfo.start.FromDatetime(start)
+timeInfo.end.FromDatetime(end)
 timeInfo.interval = dur_str
 
 meta = timeseries_generator.meta(
