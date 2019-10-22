@@ -2,7 +2,7 @@
 site/
 .vscode
 **/__pycache__/
-*.pyc
+**.pyc
 java/
 python/
 go/

@@ -8,6 +8,7 @@ verify_ssl = true
 [packages]
 protobuf3-to-dict = "*"
 protobuf = "*"
+isodate = "*"
 
 [requires]
 python_version = "3.7"

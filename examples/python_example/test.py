@@ -6,91 +6,67 @@ from google.protobuf.timestamp_pb2 import Timestamp
 from google.protobuf.json_format import MessageToJson, Parse
 import datetime
 import random
+import isodate
 import json
+import timeseries_generator
 source = amanzi_pb2.Source()
 # set simple values
 source.name = "Lake Bisqcuit"
 source.code = "LB"
-src_dict = protobuf_to_dict(source)
-print(src_dict) # lets get a normal python dictionary, potentially more useful than a json_str
-# set a more complex value
+
+elevation = amanzi_pb2.Elevation()
+elevation.value = 100
+elevation.units = "ft"
+elevation.datum = "NAVD88"
+
+source_location = amanzi_pb2.SourceLocation()
+source_location.name = "corner of lake biscuit"
+source_location.code = "5315315"
+source_location.elevation.CopyFrom(elevation)
 
 parameter = amanzi_pb2.Parameter()
 parameter.name = "Streamflow"
 parameter.code = "QIN"
 parameter.units = "cfs"
 
-meta = amanzi_pb2.TimeSeriesMetaInfo()
-meta.id = str(uuid4())
-meta.name = "test ts"
-meta.code = "wow cool"
-meta.type = "a bullshit forecast XD"
-properties = Struct()
-properties.update(
-    {
-        "key2": [1,2,3,4],
-        "key": 1,
-        "fab": "string",
-        "boo": None,
-        "dam": {
-            "beta": "biscuit"
-        }
-    }
-)
 reference = datetime.datetime.utcnow().timestamp()
 start = datetime.datetime(year=2000,month=1,day=1,hour=0, minute=0, second=0, tzinfo=datetime.timezone.utc)
 end = start + datetime.timedelta(days=10)
 duration = datetime.timedelta(hours=1)
-print(reference)
-
 # set up timestamp pbs
 reference_pb = Timestamp()
 reference_pb.seconds = int(reference)
-
 start_pb = Timestamp()
 start_pb.seconds = int(start.timestamp())
-
 end_pb = Timestamp()
 end_pb.seconds = int(end.timestamp())
+dur_str = isodate.duration_isoformat(duration)
 
-
-interval = datetime.timedelta(hours=1)
 timeInfo = amanzi_pb2.TimeInfo()
 timeInfo.referenceTime.CopyFrom(reference_pb)
 timeInfo.start.CopyFrom(start_pb)
 timeInfo.end.CopyFrom(end_pb)
-timeInfo.interval = "PT1H"
+timeInfo.interval = dur_str
 
-meta.source.CopyFrom(source)
-meta.dataType = amanzi_pb2.DataType.string_value
-meta.sourceLocation.name = "Corner of Lake Bisqcuit"
-meta.sourceLocation.code = "315315"
-meta.sourceLocation.elevation.value = 100
-meta.sourceLocation.elevation.units = "ft"
-meta.sourceLocation.elevation.datum = "NAVD88"
-meta.timeInfo.CopyFrom(timeInfo)
-meta.parameter.CopyFrom(parameter)
-meta.properties.CopyFrom(properties)
+meta = timeseries_generator.meta(
+    name="test",
+    code="t1",
+    statistic="generated",
+    type="forecast",
+    properties={
+        "test": "foo"
+    },
+    source=source,
+    source_location=source_location,
+    parameter=parameter,
+    time_info=timeInfo
+)
 
-ts = amanzi_pb2.TimeSeries()
-ts.metaInfo.CopyFrom(meta)
-
-current = start
-
-while current.timestamp() <= end.timestamp():
-    record = ts.data.add()
-    record_dt_pb = Timestamp()
-    record_dt_pb.seconds = int(current.timestamp())
-
-    record.datetime.CopyFrom(record_dt_pb)
-    record.qualifiers.extend("p")
-    record.value.string_value = str(random.random())
-    current = current + duration
+ts = timeseries_generator.generate_timeseries(meta)
 
 
 print(ts.SerializeToString())
-d = protobuf_to_dict(ts)
-j = MessageToJson(ts.metaInfo)
+j = MessageToJson(ts)
 print(j)
 # new_ts = Parse(j, amanzi_pb2.TimeSeries())
 # print(new_ts)
