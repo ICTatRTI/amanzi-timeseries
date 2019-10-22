@@ -1,13 +1,8 @@
 from timeseries import amanzi_pb2
-from uuid import uuid4
-from protobuf_to_dict import protobuf_to_dict, dict_to_protobuf
-from google.protobuf.struct_pb2 import Struct
 from google.protobuf.timestamp_pb2 import Timestamp
-from google.protobuf.json_format import MessageToJson, Parse
+from google.protobuf.json_format import MessageToJson
 import datetime
-import random
 import isodate
-import json
 import timeseries_generator
 source = amanzi_pb2.Source()
 # set simple values
