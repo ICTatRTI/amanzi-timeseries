@@ -162,6 +162,6 @@ ts = timeseries_generator.generate_timeseries2(meta)
 # print(dt)
 # print(vals)
 
-data = ts_to_data_arrays(ts)
+data = ts_to_message_arrays(ts)
 print(data)
 
