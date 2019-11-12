@@ -66,7 +66,7 @@ def generate_timeseries2(meta_info: amanzi_pb2.TimeSeriesMetaInfo) -> amanzi_pb2
         record = ts.data.add()
         record.datetime.FromDatetime(current)
         record.qualifiers.extend("p")
-        record.value.string_value = str(random.random() * 100)
+        record.value.float_value = random.random() * 100
         current = current + duration
     return ts
 

@@ -39,7 +39,7 @@ start = datetime.datetime(year=2000,
                           minute=0,
                           second=0,
                           tzinfo=datetime.timezone.utc)
-end = start + datetime.timedelta(days=2)
+end = start + datetime.timedelta(days=365)
 duration = datetime.timedelta(hours=1)
 # set up timestamp pbs
 dur_str = isodate.duration_isoformat(duration)
@@ -87,17 +87,37 @@ meta = timeseries_generator.meta(
 # generate a random time series
 ts = timeseries_generator.generate_timeseries2(meta)
 
-# to binary string
+# Write Binary
 s = ts.SerializeToString()
 # print(s)
+# with open("ts.bin", "wb") as f:
+#     f.write(s)
 
-# to json
+# Read Binary
+# new_ts = amanzi_pb2.TimeSeries()
+# with open("ts.bin", "rb") as f:
+#     # print(f.read())
+#     new_ts.ParseFromString(f.read())
+# # print(new_ts)
+# print(MessageToJson(new_ts))
+
+
+# Write JSON
 j = MessageToJson(ts)
 # print(j)
+with open("ts.json", "w") as f:
+    f.write(j)
+
+# Read JSON
+# with open("ts.json", "r") as f:
+#     new_ts = Parse(f.read(), amanzi_pb2.TimeSeries())
+# print(MessageToJson(new_ts))
+
 
 # parse to go from json to proto TS
-new_ts = Parse(j, amanzi_pb2.TimeSeries())
-print(new_ts)
+# new_ts = Parse(j, amanzi_pb2.TimeSeries())
+# print(new_ts)
+
 # print(protobuf_to_dict(ts))
 
 # if ts.data[0].value.string_value:
