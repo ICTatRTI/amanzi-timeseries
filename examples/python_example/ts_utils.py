@@ -154,7 +154,7 @@ def create_meta(
 
 
 def ts_to_data_arrays(ts: amanzi_pb2.TimeSeries) -> tuple:
-    """Creates 2 lists of timeseries data.
+    """Creates 2 lists from an Amanzi Timeseries.
         First list has datetime objects, second list has values
         Value type used in first timeseries message assumed for all subsequent messages
 
@@ -167,37 +167,58 @@ def ts_to_data_arrays(ts: amanzi_pb2.TimeSeries) -> tuple:
     if ts.data[0].value.double_value:
         for d in ts.data:
             dts.append(d.datetime.ToDatetime())
-            vals.append(d.value.double_value)
+            if d.value.double_value:
+                vals.append(d.value.double_value)
+            else:
+                vals.append(None)
     elif ts.data[0].value.float_value:
         for d in ts.data:
             dts.append(d.datetime.ToDatetime())
-            vals.append(d.value.float_value)
+            if d.value.float_value:
+                vals.append(d.value.float_value)
+            else:
+                vals.append(None)
     elif ts.data[0].value.int64_value:
         for d in ts.data:
             dts.append(d.datetime.ToDatetime())
-            vals.append(d.value.int64_value)
+            if d.value.int64_value:
+                vals.append(d.value.int64_value)
+            else:
+                vals.append(None)
     elif ts.data[0].value.int32_value:
         for d in ts.data:
             dts.append(d.datetime.ToDatetime())
-        vals.append(d.value.int32_value)
+            if d.value.int32_value:
+                vals.append(d.value.int32_value)
+            else:
+                vals.append(None)
     elif ts.data[0].value.uint64_value:
         for d in ts.data:
             dts.append(d.datetime.ToDatetime())
-            vals.append(d.value.uint64_value)
+            if d.value.uint64_value:
+                vals.append(d.value.uint64_value)
+            else:
+                vals.append(None)
     elif ts.data[0].value.uint32_value:
         for d in ts.data:
             dts.append(d.datetime.ToDatetime())
-            vals.append(d.value.uint32_value)
+            if d.value.uint32_value:
+                vals.append(d.value.uint32_value)
+            else:
+                vals.append(None)
     elif ts.data[0].value.string_value:
         for d in ts.data:
             dts.append(d.datetime.ToDatetime())
-            vals.append(d.value.string_value)
+            if d.value.string_value:
+                vals.append(d.value.string_value)
+            else:
+                vals.append(None)
 
     return dts, vals
 
 
 def ts_to_message_arrays(ts: amanzi_pb2.TimeSeries) -> list:
-    """
+    """Takes an Amanzi Timeseries and converts it to a list of lists
 
     :param ts: an amanzi_pb2.TimeSeries object
     :return: a list of lists [[datetime, value],[datetime, value], ...]
@@ -207,24 +228,45 @@ def ts_to_message_arrays(ts: amanzi_pb2.TimeSeries) -> list:
 
     if ts.data[0].value.double_value:
         for d in ts.data:
-            data.append([d.datetime.ToDatetime(), d.value.double_value])
+            if d.value.double_value:
+                data.append([d.datetime.ToDatetime(), d.value.double_value])
+            else:
+                data.append([d.datetime.ToDatetime(), None])
     elif ts.data[0].value.float_value:
         for d in ts.data:
-            data.append([d.datetime.ToDatetime(), d.value.float_value])
+            if d.value.float_value:
+                data.append([d.datetime.ToDatetime(), d.value.float_value])
+            else:
+                data.append([d.datetime.ToDatetime(), None])
     elif ts.data[0].value.int64_value:
         for d in ts.data:
-            data.append([d.datetime.ToDatetime(), d.value.int64_value])
+            if d.value.int64_value:
+                data.append([d.datetime.ToDatetime(), d.value.int64_value])
+            else:
+                data.append([d.datetime.ToDatetime(), None])
     elif ts.data[0].value.int32_value:
         for d in ts.data:
-            data.append([d.datetime.ToDatetime(), d.value.int32_value])
+            if d.value.int32_value:
+                data.append([d.datetime.ToDatetime(), d.value.int32_value])
+            else:
+                data.append([d.datetime.ToDatetime(), None])
     elif ts.data[0].value.uint64_value:
         for d in ts.data:
-            data.append([d.datetime.ToDatetime(), d.value.uint64_value])
+            if d.value.uint64_value:
+                data.append([d.datetime.ToDatetime(), d.value.uint64_value])
+            else:
+                data.append([d.datetime.ToDatetime(), None])
     elif ts.data[0].value.uint32_value:
         for d in ts.data:
-            data.append([d.datetime.ToDatetime(), d.value.uint32_value])
+            if d.value.uint32_value:
+                data.append([d.datetime.ToDatetime(), d.value.uint32_value])
+            else:
+                data.append([d.datetime.ToDatetime(), None])
     elif ts.data[0].value.string_value:
         for d in ts.data:
-            data.append([d.datetime.ToDatetime(), d.value.string_value])
+            if d.value.string_value:
+                data.append([d.datetime.ToDatetime(), d.value.string_value])
+            else:
+                data.append([d.datetime.ToDatetime(), None])
 
     return data
