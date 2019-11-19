@@ -270,3 +270,58 @@ def ts_to_message_arrays(ts: amanzi_pb2.TimeSeries) -> list:
                 data.append([d.datetime.ToDatetime(), None])
 
     return data
+
+
+def write_arrays_to_ts(meta: amanzi_pb2.TimeSeriesMetaInfo,
+                       datetime: List[datetime.datetime],
+                       values: list,
+                       qualifiers: List[list] = None) -> amanzi_pb2.TimeSeries:
+    """Takes meta data, a list of datetime and a list of values and returns a timesseries
+
+    Parameters
+    ----------
+    meta: amanzi_pb2.TimeSeriesMetaInfo
+        metaInfo that will be used for the returned TS
+    datetime: List[datetime.datetime]
+        List of datetime values that will be in returned TS
+        Must be same length as values list
+    values: list
+        List of values that will be used in the returned TS
+        Value type used in returned TS is selected based on type of first value in list
+        int -> int64_value
+        float -> float_value
+        all others -> string_value
+    qualifiers: List[list] = None
+        Optional list of lists for qualifier data
+    """
+
+    ts = amanzi_pb2.TimeSeries()
+    ts.metaInfo.CopyFrom(meta)
+
+    if len(datetime) != len(values):
+        raise IndexError("Length of datetime and values list must be the same")
+
+    if qualifiers:
+        if len(datetime) != len(qualifiers):
+            raise IndexError("Length of qualifiers and datetime list must be the same")
+
+    if isinstance(values[0], int):
+        for i, d in enumerate(datetime):
+            record = ts.data.add()
+            record.datetime.FromDatetime(d)
+            record.qualifiers.extend(qualifiers[i])
+            record.value.int64_value = values[i]
+    elif isinstance(values[0], float):
+        for i, d in enumerate(datetime):
+            record = ts.data.add()
+            record.datetime.FromDatetime(d)
+            record.qualifiers.extend(qualifiers[i])
+            record.value.float_value = values[i]
+    else:
+        for i, d in enumerate(datetime):
+            record = ts.data.add()
+            record.datetime.FromDatetime(d)
+            record.qualifiers.extend(qualifiers[i])
+            record.value.string_value = str(values[i])
+
+    return ts
