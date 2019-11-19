@@ -32,3 +32,9 @@ for msg in msgs:
 # qualifiers = [[],[],[],[]]
 # new_ts = write_arrays_to_ts(meta=ts.metaInfo, datetime=datetime, values=values, qualifiers=qualifiers)
 # print(MessageToJson(new_ts))
+
+datetime = [datetime(2000, 1, 1, 0, 0), datetime(2000, 1, 1, 1, 0), datetime(2000, 1, 1, 2, 0), datetime(2000, 1, 1, 3, 0)]
+values = [None, "bar", 1, 1.5]
+qualifiers = [[],[],[],[]]
+new_ts = write_arrays_to_ts(meta=ts.metaInfo, datetime=datetime, values=values, qualifiers=qualifiers)
+print(MessageToJson(new_ts))

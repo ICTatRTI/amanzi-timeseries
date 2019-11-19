@@ -3,7 +3,7 @@ from google.protobuf.timestamp_pb2 import Timestamp
 from google.protobuf.json_format import MessageToJson, Parse
 import datetime
 import isodate
-import timeseries_generator
+# import timeseries_generator
 from uuid import uuid4
 from typing import Dict, AnyStr, Any, List
 
@@ -305,23 +305,42 @@ def write_arrays_to_ts(meta: amanzi_pb2.TimeSeriesMetaInfo,
         if len(datetime) != len(qualifiers):
             raise IndexError("Length of qualifiers and datetime list must be the same")
 
-    if isinstance(values[0], int):
-        for i, d in enumerate(datetime):
-            record = ts.data.add()
-            record.datetime.FromDatetime(d)
+    for i, d in enumerate(datetime):
+        record = ts.data.add()
+        record.datetime.FromDatetime(d)
+        if values[i]:
+            if isinstance(values[i], int):
+                record.value.int64_value = values[i]
+            elif isinstance(values[i], float):
+                record.value.float_value = values[i]
+            else:
+                record.value.string_value = str(values[i])
+        if qualifiers:
             record.qualifiers.extend(qualifiers[i])
-            record.value.int64_value = values[i]
-    elif isinstance(values[0], float):
-        for i, d in enumerate(datetime):
-            record = ts.data.add()
-            record.datetime.FromDatetime(d)
-            record.qualifiers.extend(qualifiers[i])
-            record.value.float_value = values[i]
-    else:
-        for i, d in enumerate(datetime):
-            record = ts.data.add()
-            record.datetime.FromDatetime(d)
-            record.qualifiers.extend(qualifiers[i])
-            record.value.string_value = str(values[i])
+    #
+    # if isinstance(values[0], int):
+    #     for i, d in enumerate(datetime):
+    #         record = ts.data.add()
+    #         record.datetime.FromDatetime(d)
+    #         if qualifiers:
+    #             record.qualifiers.extend(qualifiers[i])
+    #         if values[i]:
+    #             record.value.int64_value = values[i]
+    # elif isinstance(values[0], float):
+    #     for i, d in enumerate(datetime):
+    #         record = ts.data.add()
+    #         record.datetime.FromDatetime(d)
+    #         if qualifiers:
+    #             record.qualifiers.extend(qualifiers[i])
+    #         if values[i]:
+    #             record.value.float_value = values[i]
+    # elif values[0]:
+    #     for i, d in enumerate(datetime):
+    #         record = ts.data.add()
+    #         record.datetime.FromDatetime(d)
+    #         if qualifiers:
+    #             record.qualifiers.extend(qualifiers[i])
+    #         if values[i]:
+    #             record.value.string_value = str(values[i])
 
     return ts
