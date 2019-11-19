@@ -6,7 +6,6 @@ import isodate
 import timeseries_generator
 from uuid import uuid4
 
-from Timeseries import Timeseries
 from ts_utils import create_source, ts_to_data_arrays, ts_to_message_arrays
 
 
@@ -130,28 +129,6 @@ ts = timeseries_generator.generate_timeseries2(meta)
 
 # for dvp in ts.data:
 #     print(dvp.datetime.ToDatetime(), dvp.value.double_value)
-
-# tsc = Timeseries()
-# tsc.load_json(j)
-
-# print(tsc.interval)
-#
-# tsc.id = str(uuid4())
-# tsc.name = "Timeseries name"
-# tsc.code = "TSC"
-# tsc.statistic = "Instantaneous"
-# tsc.type = "Observed"
-# tsc.interval = "PT2H"
-# print(tsc.interval)
-# tsc.foo = "Foo"
-
-# tsc.print_json()
-# dts, vals = tsc.to_data_arrays()
-# print(dts)
-# print(vals)
-
-# data = tsc.to_message_arrays()
-# print(data)
 
 # source = create_source(name="USGS", code="USGS")
 # print(type(source))
