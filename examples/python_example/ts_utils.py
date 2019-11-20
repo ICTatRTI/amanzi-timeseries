@@ -1,5 +1,4 @@
 from timeseries import amanzi_pb2
-import pandas as pd
 from google.protobuf.timestamp_pb2 import Timestamp
 from google.protobuf.json_format import MessageToJson, Parse
 import datetime
@@ -285,15 +284,19 @@ def ts_to_message_arrays(ts: amanzi_pb2.TimeSeries) -> list:
 
     return data
 
-
-def ts_to_df(ts: amanzi_pb2.TimeSeries) -> pd.DataFrame:
-    """Amanzi protobuf timeseries to Pandas DataFrame
-    :param ts: json timeseries (amanzi.ts.spec)
-    :return: dataframe
-    """
-    dts, vals = ts_to_data_arrays(ts)
-    df = pd.DataFrame({'data': vals}, index=dts)
-    return df
+# ToDo Not sure this is the best way to handle this.
+try:
+    import pandas as pd
+    def ts_to_df(ts: amanzi_pb2.TimeSeries) -> pd.DataFrame:
+        """Amanzi protobuf timeseries to Pandas DataFrame
+        :param ts: json timeseries (amanzi.ts.spec)
+        :return: dataframe
+        """
+        dts, vals = ts_to_data_arrays(ts)
+        df = pd.DataFrame({'data': vals}, index=dts)
+        return df
+except ImportError:
+    print("Pandas was not imported.  Pandas functions will not work")
 
 
 def write_arrays_to_ts(meta: amanzi_pb2.TimeSeriesMetaInfo,
