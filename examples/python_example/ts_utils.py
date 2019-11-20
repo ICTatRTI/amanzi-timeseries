@@ -1,9 +1,9 @@
 from timeseries import amanzi_pb2
+import pandas as pd
 from google.protobuf.timestamp_pb2 import Timestamp
 from google.protobuf.json_format import MessageToJson, Parse
 import datetime
 import isodate
-# import timeseries_generator
 from uuid import uuid4
 from typing import Dict, AnyStr, Any, List
 
@@ -158,55 +158,62 @@ def ts_to_data_arrays(ts: amanzi_pb2.TimeSeries) -> tuple:
         First list has datetime objects, second list has values
         Value type used in first timeseries message assumed for all subsequent messages
 
-    :param ts: an amanzi_pb2.TimeSeries object
-    :return: a tuple of two lists.  the first is datetime objects and the second is the values
+    Parameters
+    ----------
+    ts: an amanzi_pb2.TimeSeries object
+
+    Return
+    ------
+    A tuple of two lists:
+        The first is datetime objects and the second is the values
     """
     dts = []
     vals = []
+    val_field = ts.data[0].value.ListFields()[0][0].name
 
-    if ts.data[0].value.double_value:
+    if val_field == 'double_value':
         for d in ts.data:
             dts.append(d.datetime.ToDatetime())
             if d.value.double_value:
                 vals.append(d.value.double_value)
             else:
                 vals.append(None)
-    elif ts.data[0].value.float_value:
+    elif val_field == 'float_value':
         for d in ts.data:
             dts.append(d.datetime.ToDatetime())
             if d.value.float_value:
                 vals.append(d.value.float_value)
             else:
                 vals.append(None)
-    elif ts.data[0].value.int64_value:
+    elif val_field == 'int64_value':
         for d in ts.data:
             dts.append(d.datetime.ToDatetime())
             if d.value.int64_value:
                 vals.append(d.value.int64_value)
             else:
                 vals.append(None)
-    elif ts.data[0].value.int32_value:
+    elif val_field == 'int32_value':
         for d in ts.data:
             dts.append(d.datetime.ToDatetime())
             if d.value.int32_value:
                 vals.append(d.value.int32_value)
             else:
                 vals.append(None)
-    elif ts.data[0].value.uint64_value:
+    elif val_field == 'uint64_value':
         for d in ts.data:
             dts.append(d.datetime.ToDatetime())
             if d.value.uint64_value:
                 vals.append(d.value.uint64_value)
             else:
                 vals.append(None)
-    elif ts.data[0].value.uint32_value:
+    elif val_field == 'uint32_value':
         for d in ts.data:
             dts.append(d.datetime.ToDatetime())
             if d.value.uint32_value:
                 vals.append(d.value.uint32_value)
             else:
                 vals.append(None)
-    elif ts.data[0].value.string_value:
+    elif val_field == 'string_value':
         for d in ts.data:
             dts.append(d.datetime.ToDatetime())
             if d.value.string_value:
@@ -220,49 +227,56 @@ def ts_to_data_arrays(ts: amanzi_pb2.TimeSeries) -> tuple:
 def ts_to_message_arrays(ts: amanzi_pb2.TimeSeries) -> list:
     """Takes an Amanzi Timeseries and converts it to a list of lists
 
-    :param ts: an amanzi_pb2.TimeSeries object
-    :return: a list of lists [[datetime, value],[datetime, value], ...]
+    Parameters
+    ----------
+    ts: an amanzi_pb2.TimeSeries object
+
+    Returns
+    -------
+    data: list
+        A list of lists with pattern [[datetime, value],[datetime, value], ...]
     """
 
     data = []
+    val_field = ts.data[0].value.ListFields()[0][0].name
 
-    if ts.data[0].value.double_value:
+    if val_field == 'double_value':
         for d in ts.data:
             if d.value.double_value:
                 data.append([d.datetime.ToDatetime(), d.value.double_value])
             else:
                 data.append([d.datetime.ToDatetime(), None])
-    elif ts.data[0].value.float_value:
+    elif val_field == 'float_value':
         for d in ts.data:
             if d.value.float_value:
                 data.append([d.datetime.ToDatetime(), d.value.float_value])
             else:
                 data.append([d.datetime.ToDatetime(), None])
-    elif ts.data[0].value.int64_value:
+    elif val_field == 'int64_value':
         for d in ts.data:
             if d.value.int64_value:
                 data.append([d.datetime.ToDatetime(), d.value.int64_value])
             else:
                 data.append([d.datetime.ToDatetime(), None])
-    elif ts.data[0].value.int32_value:
+    elif val_field == 'int32_value':
         for d in ts.data:
             if d.value.int32_value:
                 data.append([d.datetime.ToDatetime(), d.value.int32_value])
             else:
                 data.append([d.datetime.ToDatetime(), None])
-    elif ts.data[0].value.uint64_value:
+    elif val_field == 'uint64_value':
         for d in ts.data:
             if d.value.uint64_value:
                 data.append([d.datetime.ToDatetime(), d.value.uint64_value])
             else:
                 data.append([d.datetime.ToDatetime(), None])
-    elif ts.data[0].value.uint32_value:
+    elif val_field == 'uint32_value':
         for d in ts.data:
             if d.value.uint32_value:
                 data.append([d.datetime.ToDatetime(), d.value.uint32_value])
             else:
                 data.append([d.datetime.ToDatetime(), None])
-    elif ts.data[0].value.string_value:
+    elif val_field == 'string_value':
         for d in ts.data:
             if d.value.string_value:
                 data.append([d.datetime.ToDatetime(), d.value.string_value])
@@ -270,6 +284,16 @@ def ts_to_message_arrays(ts: amanzi_pb2.TimeSeries) -> list:
                 data.append([d.datetime.ToDatetime(), None])
 
     return data
+
+
+def ts_to_df(ts: amanzi_pb2.TimeSeries) -> pd.DataFrame:
+    """Amanzi protobuf timeseries to Pandas DataFrame
+    :param ts: json timeseries (amanzi.ts.spec)
+    :return: dataframe
+    """
+    dts, vals = ts_to_data_arrays(ts)
+    df = pd.DataFrame({'data': vals}, index=dts)
+    return df
 
 
 def write_arrays_to_ts(meta: amanzi_pb2.TimeSeriesMetaInfo,
@@ -293,6 +317,11 @@ def write_arrays_to_ts(meta: amanzi_pb2.TimeSeriesMetaInfo,
         all others -> string_value
     qualifiers: List[list] = None
         Optional list of lists for qualifier data
+
+    Returns
+    -------
+    ts: amanzi_pb2.TimeSeries
+        an Amanzi TS that has the provided metadata and the date, value and qualifier data
     """
 
     ts = amanzi_pb2.TimeSeries()
@@ -305,42 +334,19 @@ def write_arrays_to_ts(meta: amanzi_pb2.TimeSeriesMetaInfo,
         if len(datetime) != len(qualifiers):
             raise IndexError("Length of qualifiers and datetime list must be the same")
 
+    # ToDo: I'd rather check for value type once but if first value is None that doesn't work.
+    # This can result in more than one value type in a TS
     for i, d in enumerate(datetime):
         record = ts.data.add()
         record.datetime.FromDatetime(d)
         if values[i]:
-            if isinstance(values[i], int):
+            if isinstance(values[0], int):
                 record.value.int64_value = values[i]
-            elif isinstance(values[i], float):
+            elif isinstance(values[0], float):
                 record.value.float_value = values[i]
             else:
                 record.value.string_value = str(values[i])
         if qualifiers:
             record.qualifiers.extend(qualifiers[i])
-    #
-    # if isinstance(values[0], int):
-    #     for i, d in enumerate(datetime):
-    #         record = ts.data.add()
-    #         record.datetime.FromDatetime(d)
-    #         if qualifiers:
-    #             record.qualifiers.extend(qualifiers[i])
-    #         if values[i]:
-    #             record.value.int64_value = values[i]
-    # elif isinstance(values[0], float):
-    #     for i, d in enumerate(datetime):
-    #         record = ts.data.add()
-    #         record.datetime.FromDatetime(d)
-    #         if qualifiers:
-    #             record.qualifiers.extend(qualifiers[i])
-    #         if values[i]:
-    #             record.value.float_value = values[i]
-    # elif values[0]:
-    #     for i, d in enumerate(datetime):
-    #         record = ts.data.add()
-    #         record.datetime.FromDatetime(d)
-    #         if qualifiers:
-    #             record.qualifiers.extend(qualifiers[i])
-    #         if values[i]:
-    #             record.value.string_value = str(values[i])
 
     return ts
