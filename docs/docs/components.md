@@ -18,18 +18,20 @@ The following is an example of what a timeseries message looks like in JSON.
     "name": "Lake Biscuit Release",
     "code": "LBR",
     "type": "forecast",
-    "statistic": "Instantaneous",
+    "typeVariant": "raw",
     "properties": {
       "test": "foo"
     },
     "groups": [
       {
         "groupId": "781bccb0-cc19-40bb-b5bf-9b1b6ebe4499",
-        "description": "Ensemble 1"
+        "description": "Ensemble 1",
+        "groupType": "Ensemble"
       },
       {
         "groupId": "c2a456a4-b923-4504-8a3f-c0a970b86c17",
-        "description": "HMS Model Simulation"
+        "description": "HMS Model Simulation",
+        "groupType": "Model"
       }
     ],
     "source": {
@@ -48,13 +50,14 @@ The following is an example of what a timeseries message looks like in JSON.
     "parameter": {
       "name": "Streamflow",
       "code": "QIN",
-      "units": "cfs"
+      "units": "cfs",
+      "statistic": "Instantaneous",
+      "windowedInterval": "PT3H"
     },
     "timeInfo": {
       "referenceTime": "2019-10-31T17:12:07.153644Z",
       "start": "2000-01-01T00:00:00Z",
       "end": "2000-01-03T00:00:00Z",
-      "windowedInterval": "PT3H",
       "interval": "PT1H"
     },
     "origin": {
@@ -87,7 +90,7 @@ The following is an example of what a timeseries message looks like in JSON.
   ]
   ```
 ## Notes on Datetime
-The datetime fields are stored in the proto as integer seconds since the epoch.  In a JSON representation of proto message they are converted to ISO 8601 string format. This can m,ake it appear as though the datetime is stored as ISO 8601 string but it is not.
+The datetime fields are stored in the proto as integer seconds since the epoch.  In a JSON representation of proto message they are converted to ISO 8601 string format. This can make it appear as though the datetime is stored as ISO 8601 string but it is not.
 
 When working with the proto in Python there are `ToDatetime()` and `FromDatetime()` methods for the datetime fields that handel the conversion from python datetime object to integer seconds and back.
 
@@ -109,7 +112,7 @@ _metaInfo:_
 | name      | string    | A long name for the timeseries           
 | code      | string    | A short name for the timeseries           
 | type      | string    | The type of value in the timeseries, for example forecast, observed, simulated
-| statistic | string    | Describes if and how the data is aggregated.  For example if the data is instantaneous, mean, sum, min, etc.
+| typeVariant | string | Used to further defined the type.  (e.g. raw, adjusted, etc.)
 | properties| object    | A generic object to store timeseries properties not captured in the other metaInfo messages.
 | groups    | array    | Used to specify what groups the timeseries belongs to.  this could be an ensemble, an ensemble member, a model simulation, or any other group of timeseries.  See below for description of group
 | source    | object    | Where the data came from.  What organization, what model, etc. (see message definition below)
@@ -134,6 +137,7 @@ _group:_
 |:-----     |:-----     |:------------                              
 | groupId       | string | A universally unique identifier (UUID)    |
 | description   | string | A human readable way to identify the group
+| groupType | string | The type of group that this is (e.g. Ensemble, Ensemble Member, etc.)
 
 _source:_
 | Name      | Type      |    Description                            
@@ -154,6 +158,8 @@ _parameter:_
 | name | string | Name of the parameter being represented in the timeseries (e.g. Streamflow)
 | code | string | Short name or code for the parameter (e.g.QIN)
 | units | string | The units of the parameter (e.g. cfs)
+| statistic | string    | Describes if and how the data is aggregated.  For example if the data is instantaneous, mean, sum, min, etc.
+| windowedInterval | string | The interval of the value.  Would be used primarily when doing moving aggregations, for example.  In ISO 8601 duration string format (e.g. PT1H)
 
 _timeInfo:_
 | Name      | Type      |    Description                            
@@ -161,7 +167,6 @@ _timeInfo:_
 | referenceTime | integer | A reference time for the timeseries. Can be used for time of forecast, or some other reference time.  Datetime represented as seconds since the epoch (1/1/1970 00:00:00 UTC) in the proto.  Converted to an ISO 8601 string format (e.g. "2019-10-31T17:12:07Z") in JSON.
 | start | integer | Start time of the timeseries.  Datetime represented as seconds since the epoch (1/1/1970 00:00:00 UTC) in the proto.  Converted to an ISO 8601 string format (e.g. "2019-10-31T17:12:07Z") in JSON
 | end | | End time of the timeseries. Datetime represented as seconds since the epoch (1/1/1970 00:00:00 UTC) in the proto.  Converted to an ISO 8601 string format (e.g. "2019-10-31T17:12:07Z") in JSON
-| windowedInterval | string | The interval of the value.  Would be used primarily when doing moving aggregations, for example.  In ISO 8601 duration string format (e.g. PT1H)
 | interval | string | The expected interval of the values.  In ISO 8601 duration string format (e.g. PT1H).  If missing treat as irregular.
 
 _origin:_
