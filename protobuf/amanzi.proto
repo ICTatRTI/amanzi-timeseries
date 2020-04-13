@@ -1,7 +1,7 @@
 syntax = "proto3";
 package rti.amanzi.protobuf;
 option java_package = "org.rti.amanzi.protobuf";
-option go_package = "github.com/ICTatRTI/protobuf/protoc-gen-go/amanzi;amanzi";
+option go_package = "ptypes";
 option java_multiple_files = true;
 
 import "google/protobuf/struct.proto";

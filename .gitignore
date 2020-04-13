@@ -5,5 +5,4 @@ site/
 **.pyc
 java/
 python/
-go/
 csharp/
