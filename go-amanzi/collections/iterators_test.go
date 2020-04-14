@@ -1,8 +1,8 @@
 package collections
 
 import (
+	"github.com/ICTatRTI/amanzi-timeseries/go-amanzi/ptypes"
 	"github.com/golang/protobuf/jsonpb"
-	"go-amanzi/ptypes"
 	"os"
 	"testing"
 	"time"

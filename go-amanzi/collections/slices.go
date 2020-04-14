@@ -1,8 +1,8 @@
 package collections
 
 import (
+	apt "github.com/ICTatRTI/amanzi-timeseries/go-amanzi/ptypes"
 	"github.com/golang/protobuf/ptypes"
-	apt "go-amanzi/ptypes"
 	"time"
 )
 

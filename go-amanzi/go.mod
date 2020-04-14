@@ -1,4 +1,4 @@
-module go-amanzi
+module github.com/ICTatRTI/amanzi-timeseries/go-amanzi
 
 go 1.13
 

@@ -2,8 +2,8 @@ package collections
 
 import (
 	"fmt"
+	aptypes "github.com/ICTatRTI/amanzi-timeseries/go-amanzi/ptypes"
 	"github.com/golang/protobuf/ptypes"
-	aptypes "go-amanzi/ptypes"
 	"time"
 )
 
