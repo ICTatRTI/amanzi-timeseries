@@ -1,0 +1,30 @@
+{
+	"data": [
+		{
+			"datetime": "2020-04-14T20:47:05.454316200Z",
+			"value": {
+				"uint64Value": "1"
+			},
+			"qualifiers": [
+				"a",
+				"p"
+			],
+			"properties": {
+					"test": 5
+				}
+		},
+		{
+			"datetime": "2020-04-14T20:47:05.454316200Z",
+			"value": {
+				"uint64Value": "2"
+			},
+			"qualifiers": [
+				"d",
+				"g"
+			],
+			"properties": {
+					"test": 6
+				}
+		}
+	]
+}

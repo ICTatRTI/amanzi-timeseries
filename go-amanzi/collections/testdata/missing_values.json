@@ -1,0 +1,76 @@
+{
+  "metaInfo": {
+    "id": "0a7d5766-a3e6-4736-9340-4b9dc30e75de",
+    "name": "Lake Biscuit Release",
+    "code": "LBR",
+    "type": "forecast",
+    "properties": {
+      "test": "foo"
+    },
+    "groups": [
+      {
+        "groupId": "ede32b50-d588-44db-96fc-9e87b77d6575",
+        "description": "Ensemble 1"
+      },
+      {
+        "groupId": "6048cc09-fe30-4c45-925a-9f7788753260",
+        "description": "HMS Model Simulation"
+      }
+    ],
+    "source": {
+      "name": "Lake Biscuit Operating Authority",
+      "code": "LBOA"
+    },
+    "sourceLocation": {
+      "name": "Lake Biscuit Dam",
+      "code": "5315315",
+      "elevation": {
+        "value": 100.0,
+        "units": "ft",
+        "datum": "NAVD88"
+      }
+    },
+    "parameter": {
+      "name": "Streamflow",
+      "code": "QIN",
+      "units": "cfs",
+      "statistic": "Instantaneous"
+    },
+    "timeInfo": {
+      "referenceTime": "2019-11-07T22:27:11.945006Z",
+      "start": "2000-01-01T00:00:00Z",
+      "end": "2000-12-31T00:00:00Z",
+      "interval": "PT1H"
+    },
+    "origin": {
+      "description": "Calculated hourly mean from raw timeseries",
+      "referenceIds": [
+        "ba71e02d-f0ca-41f1-b9eb-775fc904dbe6",
+        "f3b10d54-57e9-43fe-83f5-b3b7b5f08eac"
+      ]
+    }
+  },
+  "data": [
+    {
+      "datetime": "2000-01-01T00:00:00Z"
+    },
+    {
+      "datetime": "2000-01-01T01:00:00Z",
+      "value": {
+        "floatValue": 74.30
+      }
+    },
+    {
+      "datetime": "2000-01-01T02:00:00Z",
+      "value": {
+        "floatValue": 68.17
+      }
+    },
+    {
+      "datetime": "2000-01-01T03:00:00Z",
+      "value": {
+        "floatValue": 0.14
+      }
+    }
+  ]
+}
