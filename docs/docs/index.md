@@ -1,31 +1,9 @@
 # Amanzi™ Timeseries Specifcation
 
-The Amanzi™ Time Series Specification (also referred to as the TSAPI) is a development standard for the storage, processing,
-transmitting and consuming of Time Series data throughout the Amanzi™ system. The Amanzi™ Time series specification is intended
-to be a fully comprehensive format supporting the following kinds of datasets: 
-
-* Real time (e.g sensor data), 
-* Historical  (both modeled and observed)
-* Projections (forecasts into the future).
-
-
-## Storing Time Series data efficiently
-Time series data is a challenging beast to handle efficiently at scale and there have been numerous implementations attempting
-to solve the problem. The Amanzi™ specification for storage has six major objectives:
-
-* Keep the storage solution simple but efficient.
-* Easily allow for local (users harddisk) or remote storage options.
-* Store in a format that is commonly used for processing the data.
-* Always preserve raw data from an origin datasource for a specified period of time.
-* Store time series records in such a way that allows for partial reads/pagination.
-* Flexible enough to handle very structured data or completely unstructured data.
-
-
-## Providing sensible ways to process time series data
-
-Through the implementations of this specification the goal is to provide a default set of operations
-that are commonly performed on time series data. See [Implementations](implementations/create.md) for a list of 
-implementations of this specification.
+The Amanzi™ Time Series Specification is a on-the-wire format standard for transmitting 
+Time Series data. The specification is based on googles [Protobuf Protocols](https://developers.google.com/protocol-buffers/).
+In addition to the on-the-wire format specification, wrapper libraries that provide quality of life improvements for working with
+the protobufs. 
 
 ## Transmitting time series data 
 
@@ -44,10 +22,3 @@ For server to server communication ideally HTTP2 with a binary [protobuf](https:
 
 Implementations of this specifications **must** support both of these formats
 
-Unfortunately there is not a one-size fits all solution for transmitting time series data. However [this]() will
-list some best practices around transporting time series data around for common use cases. 
-
-
-## Consuming Time series data as an end-user
-
-TODO
