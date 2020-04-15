@@ -32,7 +32,6 @@ type TimeSeriesIterator interface {
 	Float64Record() aptypes.Float64Record
 	Len() int
 }
-
 type LazyIterator struct {
 	current int
 	meta    *aptypes.TimeSeriesMetaInfo

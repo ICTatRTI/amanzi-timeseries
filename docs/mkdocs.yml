@@ -1,15 +1,8 @@
 site_name: Amanzi TimeSeries Specification
 nav:
   - Introduction: index.md
-  - Proposal RFC: proposal_rfc/v0.3.md
-  - Current Version: current_version/v0.2.md
-  - Previous Versions:
-    - v0.1: previous_versions/v0.1.md
-  - Implementations:
-    - Timeseries for Java(Ts4j): implementations/ts4j.md
-    - Creating your own implementation: implementations/create.md
-  - Best Practices: best_practices/index.md
-  - About: about.md
+  - Supported Languages: languages.md
+  - Reference: components.md
 theme: material
 markdown_extensions:
   - codehilite

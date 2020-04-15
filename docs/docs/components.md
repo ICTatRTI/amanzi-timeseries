@@ -88,6 +88,7 @@ The following is an example of what a timeseries message looks like in JSON.
       ]
     }
   ]
+}
   ```
 ## Notes on Datetime
 The datetime fields are stored in the proto as integer seconds since the epoch.  In a JSON representation of proto message they are converted to ISO 8601 string format. This can make it appear as though the datetime is stored as ISO 8601 string but it is not.
