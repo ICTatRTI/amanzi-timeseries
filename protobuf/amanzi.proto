@@ -1,7 +1,7 @@
 syntax = "proto3";
 package rti.amanzi.protobuf;
 option java_package = "org.rti.amanzi.protobuf";
-option go_package = "ptypes";
+option go_package = "go-amanzi/ptypes";
 option java_multiple_files = true;
 
 import "google/protobuf/struct.proto";
@@ -107,6 +107,10 @@ message TimeSeries {
     TimeSeriesMetaInfo metaInfo = 1;
     // the time , value records of the timeseries
     repeated TimeRecord data = 3;
+}
+
+message TimeSeriesList {
+    repeated TimeSeries timeseries = 1;
 }
 
 
