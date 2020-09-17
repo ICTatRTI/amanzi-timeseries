@@ -9,9 +9,7 @@ on:
     branches: [ master ]
     paths:
       - 'go-amanzi/'
-
 jobs:
-
   build:
     name: Build
     runs-on: ubuntu-latest
@@ -37,8 +35,11 @@ jobs:
 
     - name: Get dependencies
       if: steps.mod-cache.outputs.cache-hit != 'true'
+      working-directory: 'go-amanzi/'
       run: go mod download
     - name: Vet
+      working-directory: 'go-amanzi/'
       run: go vet ./...
     - name: Test
+      working-directory: 'go-amanzi/'
       run: go test -v ./...
