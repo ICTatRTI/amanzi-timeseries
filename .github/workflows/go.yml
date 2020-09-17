@@ -1,0 +1,44 @@
+name: Go
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - 'go-amanzi/'
+  pull_request:
+    branches: [ master ]
+    paths:
+      - 'go-amanzi/'
+
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Set up Go 1.x
+      uses: actions/setup-go@v2
+      with:
+        go-version: ^1.13
+      id: go
+
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@v2
+
+    - name: Cache Dependencies
+      id: mod-cache
+      uses: actions/cache@v2
+      with:
+        path: ~/go/pkg/mod
+        key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+        restore-keys: |
+          ${{ runner.os }}-go-
+
+    - name: Get dependencies
+      if: steps.mod-cache.outputs.cache-hit != 'true'
+      run: go mod download
+    - name: Vet
+      run: go vet ./...
+    - name: Test
+      run: go test -v ./...
