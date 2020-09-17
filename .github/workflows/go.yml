@@ -3,12 +3,8 @@ name: Go
 on:
   push:
     branches: [ master ]
-    paths:
-      - 'go-amanzi/**'
   pull_request:
     branches: [ master ]
-    paths:
-      - 'go-amanzi/**'
 jobs:
   build:
     name: Build
