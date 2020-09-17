@@ -4,11 +4,11 @@ on:
   push:
     branches: [ master ]
     paths:
-      - 'go-amanzi/'
+      - 'go-amanzi/**'
   pull_request:
     branches: [ master ]
     paths:
-      - 'go-amanzi/'
+      - 'go-amanzi/**'
 jobs:
   build:
     name: Build
