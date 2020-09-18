@@ -67,8 +67,7 @@ func TestEagerIterator_Float32Record_Compatability(t *testing.T) {
 			}
 			var sum float32
 			for itr.Next() {
-				rec := itr.Float32Record()
-				if !rec.Missing {
+				if rec := itr.Float32Record(); !rec.Missing {
 					sum += rec.Value
 				}
 				itr.Len()
